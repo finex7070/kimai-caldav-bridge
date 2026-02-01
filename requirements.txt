@@ -1,0 +1,10 @@
+fastapi
+uvicorn
+python-dotenv
+pydantic
+httpx>=0.24.0
+apscheduler
+icalendar>=5.0.0
+caldav>=1.0.0
+prometheus_client
+urllib3<2.0.0

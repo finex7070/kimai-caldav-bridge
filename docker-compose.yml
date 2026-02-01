@@ -1,0 +1,28 @@
+services:
+ server:
+  build: .
+  container_name: kimai-caldav-bridge
+  restart: always
+  environment:
+   # Timezone (Optional, default: UTC)
+   TZ: UTC
+   # Kimai api url
+   KIMAI_API_URL: https://kimai.example.com/api
+   # Kimai api key
+   KIMAI_API_KEY: changeme
+   # CalDAV url
+   CALDAV_URL: https://caldav.example.com/dav/username/Calendar/name
+   # CalDAV username (Optional)
+   CALDAV_USERNAME: username
+   # CalDAV password (Optional)
+   CALDAV_PASSWORD: changeme
+   # Skip ssl certificate verification (Optional)
+   SKIP_VERIFY_CERTIFICATE: false
+  ports:
+   - "8080:8080"
+  healthcheck:
+   test: ["CMD-SHELL", "curl -f http://localhost:8080/healthz || exit 1"]
+   interval: 30s
+   timeout: 5s
+   retries: 3
+   start_period: 10s
