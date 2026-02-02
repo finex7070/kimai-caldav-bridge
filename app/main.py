@@ -379,6 +379,11 @@ async def sync_absences():
 
             if absence.halfDay:
                 summary += " (Half day)"
+            elif absence.duration:
+                hours = absence.duration / 3600
+                
+                if hours < 8:
+                    summary += f" ({hours:g}h)"
 
             event = icalendar.Event()
             event.add('uid', uid)
