@@ -29,14 +29,14 @@ docker compose up -d
 
 ## Environment Variables
 
-| Variable                  | Description                                     | Optional |
-|---------------------------|-------------------------------------------------|----------|
-| `KIMAI_API_URL`           | Base URL of the Kimai API                       | no       |
-| `KIMAI_API_KEY`           | Kimai API Key (Profile -> API Access)           | no       |
-| `CALDAV_URL`              | CalDAV URL of the calender                      | no       |
-| `CALDAV_USERNAME`         | CalDAV username                                 | yes      |
-| `CALDAV_PASSWORD`         | CalDAV password                                 | yes      |
-| `SKIP_VERIFY_CERTIFICATE` | Skip ssl certificate verification               | yes      |
+| Variable                  | Description                                     | Required | Default                                               |
+|---------------------------|-------------------------------------------------|----------|-------------------------------------------------------|
+| `KIMAI_API_URL`           | Base URL of the Kimai API                       | yes      | https://kimai.example.com/api                         |
+| `KIMAI_API_KEY`           | Kimai API Key (Profile -> API Access)           | yes      | changeme                                              |
+| `CALDAV_URL`              | CalDAV URL of the calender                      | yes      | https://caldav.example.com/dav/username/Calendar/name |
+| `CALDAV_USERNAME`         | CalDAV username                                 | no       | username                                              |
+| `CALDAV_PASSWORD`         | CalDAV password                                 | no       | changeme                                              |
+| `SKIP_VERIFY_CERTIFICATE` | Skip ssl certificate verification               | no       | false                                                 |
 
 ---
 
@@ -59,6 +59,7 @@ docker compose up -d
 
 ## Requirements
 
+- ⏱️ Kimai + [Kiami Working hours, vacation, sickness, public holidays Plugin](https://www.kimai.org/store/controlling.html)
 - 🐳 Docker + Docker Compose
 - 🔐 A valid Kimai API key
 - 📆 CalDAV URL to a calender with read + write access
