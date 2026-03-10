@@ -72,7 +72,7 @@ ABSENCE_PREFIX = "kimai-absence-"
 # --- FastAPI & Scheduler ---
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    scheduler.add_job(cronjob, 'interval', minutes=10, id="cronjob", next_run_time=datetime.now())
+    scheduler.add_job(cronjob, 'interval', minutes=10, id="cronjob", misfire_grace_time=300, next_run_time=datetime.now())
     scheduler.start()
     yield
     scheduler.shutdown()
